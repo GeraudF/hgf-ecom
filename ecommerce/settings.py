@@ -79,19 +79,19 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'djangoecom',
-#        'HOST': 'localhost',
-#        'USER' : 'root',
-#        'PASSWORD': '',
-#        'PORT': '3306',
-#    }
-#}
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djangoecom',
+        'HOST': 'localhost',
+        'USER' : 'root',
+        'PASSWORD': '',
+        'PORT': '3306',
+    }
 }
+#DATABASES = {
+#    'default': dj_database_url.config()
+#}
 
 
 # Password validation
@@ -128,7 +128,7 @@ USE_TZ = True
 
 # Enable the below DEFAULT_AUTO_FIELD when using Django 3.2 Version
 # DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-django_heroku.settings(locals())
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -144,3 +144,6 @@ MEDIA_ROOT= BASE_DIR / 'static'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
